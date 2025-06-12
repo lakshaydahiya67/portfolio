@@ -1,0 +1,37 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#1e293b" rx="12"/>
+  
+  <!-- Monitor/Screen -->
+  <rect x="80" y="60" width="240" height="140" fill="#374151" rx="8"/>
+  <rect x="90" y="70" width="220" height="120" fill="#111827" rx="4"/>
+  
+  <!-- Code lines -->
+  <rect x="100" y="85" width="60" height="3" fill="#10b981" rx="1.5"/>
+  <rect x="110" y="95" width="80" height="3" fill="#3b82f6" rx="1.5"/>
+  <rect x="110" y="105" width="45" height="3" fill="#f59e0b" rx="1.5"/>
+  <rect x="100" y="115" width="90" height="3" fill="#ef4444" rx="1.5"/>
+  <rect x="120" y="125" width="70" height="3" fill="#8b5cf6" rx="1.5"/>
+  <rect x="100" y="135" width="55" height="3" fill="#06b6d4" rx="1.5"/>
+  <rect x="110" y="145" width="85" height="3" fill="#10b981" rx="1.5"/>
+  <rect x="100" y="155" width="40" height="3" fill="#f59e0b" rx="1.5"/>
+  <rect x="110" y="165" width="75" height="3" fill="#3b82f6" rx="1.5"/>
+  
+  <!-- Monitor stand -->
+  <rect x="185" y="200" width="30" height="25" fill="#374151" rx="2"/>
+  <rect x="165" y="225" width="70" height="8" fill="#374151" rx="4"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="40" r="3" fill="#10b981" opacity="0.7"/>
+  <circle cx="200" cy="30" r="2" fill="#3b82f6" opacity="0.7"/>
+  <circle cx="250" cy="45" r="2.5" fill="#f59e0b" opacity="0.7"/>
+  <circle cx="320" cy="250" r="3" fill="#ef4444" opacity="0.7"/>
+  <circle cx="50" cy="220" r="2" fill="#8b5cf6" opacity="0.7"/>
+  
+  <!-- Brackets/Code symbols -->
+  <text x="50" y="150" fill="#10b981" font-family="monospace" font-size="24" font-weight="bold">&lt;/&gt;</text>
+  <text x="320" y="150" fill="#3b82f6" font-family="monospace" font-size="20" font-weight="bold">{}</text>
+  
+  <!-- Title -->
+  <text x="200" y="280" fill="#f8fafc" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">SOFTWARE ENGINEERING</text>
+</svg>
