@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}About - {{ name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <h1>About Me</h1>
+        <p>Learn more about my journey and passion for development</p>
+    </div>
+</section>
+
+<section class="about-detailed">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>My Story</h2>
+                <p>
+                    I'm a passionate Python developer with a strong foundation in web development 
+                    and a keen interest in creating innovative solutions. My journey in programming 
+                    started with curiosity and has evolved into a deep love for crafting efficient, 
+                    scalable applications.
+                </p>
+                <p>
+                    With expertise in Django, I specialize in building robust web applications 
+                    that deliver exceptional user experiences. I believe in writing clean, 
+                    maintainable code and following best practices in software development.
+                </p>
+                
+                <h3>What I Do</h3>
+                <ul class="skills-list">
+                    <li>Full-Stack Web Development</li>
+                    <li>API Design and Development</li>
+                    <li>Database Design and Optimization</li>
+                    <li>Code Review and Mentoring</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

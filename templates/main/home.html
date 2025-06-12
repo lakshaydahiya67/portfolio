@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">{{ name }}</span>
+                </h1>
+                <h2 class="hero-subtitle">{{ title }}</h2>
+                <p class="hero-description">
+                    {{ summary }}
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-circle">
+                    <img src="{% static 'images/Lakshay_passport_size.jpg' %}" alt="Lakshay" class="profile-img">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </div>
+    <div class="hero-bg-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Get to know me better</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text animate-on-scroll">
+                <p>
+                    I'm a passionate Python Developer specialized in Django Full Stack Development 
+                    with expertise in REST APIs, ORM, and MVT architecture. I have hands-on experience 
+                    working at Cincooni Systems Private Ltd, where I focused on creating scalable web 
+                    applications and implementing innovative solutions.
+                </p>
+                <p>
+                    My technical expertise includes MySQL database integration, Git/GitHub workflows, 
+                    and building robust web applications. I'm committed to continuous learning and 
+                    driving organizational growth through efficient, clean code and modern development practices.
+                </p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>1+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h3>8+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat">
+                        <h3>6+</h3>
+                        <p>Technologies Mastered</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image animate-on-scroll">
+                <div class="about-img-container">
+                    <img src="{% static 'images/image.png' %}" alt="About Me">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <p class="section-subtitle">Technologies I work with</p>
+        </div>
+        <div class="skills-grid">
+            {% for skill in skills %}
+            <div class="skill-card animate-on-scroll">
+                <div class="skill-icon">
+                    <i class="{{ skill.icon }}"></i>
+                </div>
+                <h3>{{ skill.name }}</h3>
+                <div class="skill-progress">
+                    <div class="progress-bar" data-width="85"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Some of my recent work</p>
+        </div>
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card animate-on-scroll">
+                <div class="project-image">
+                    <img src="{% static project.image %}" alt="{{ project.title }}">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="{{ project.github }}" class="project-link" target="_blank" title="View Code">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="{{ project.demo }}" class="project-link" target="_blank" title="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description }}</p>
+                    <div class="project-tech">
+                        {% for tech in project.tech %}
+                        <span class="tech-tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="experience">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Experience</h2>
+            <p class="section-subtitle">My professional journey</p>
+        </div>
+        <div class="timeline animate-on-scroll">
+            {% for exp in experience %}
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>{{ exp.title }}</h3>
+                    <h4>{{ exp.company }}</h4>
+                    <span class="timeline-date">{{ exp.period }}</span>
+                    <p>{{ exp.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Let's work together</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info animate-on-scroll">
+                <a href="mailto:{{ email }}" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p>{{ email }}</p>
+                    </div>
+                </a>
+                <a href="tel:{{ phone }}" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Phone</h3>
+                        <p>{{ phone }}</p>
+                    </div>
+                </a>
+                <a href="{{ linkedin }}" target="_blank" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>LinkedIn</h3>
+                        <p>{{ linkedin }}</p>
+                    </div>
+                </a>
+            </div>
+            <div class="contact-info animate-on-scroll">
+                <a href="{{ github }}" target="_blank" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Github</h3>
+                        <p>{{ github }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
