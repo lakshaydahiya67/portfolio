@@ -16,6 +16,9 @@
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="{% static 'resume/Lakshay_software_developer.pdf' %}" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
@@ -73,8 +76,24 @@
                 </div>
             </div>
             <div class="about-image animate-on-scroll">
-                <div class="about-img-container">
+                <!-- <div class="about-img-container">
                     <img src="{% static 'images/image.png' %}" alt="About Me">
+                </div> -->
+                
+                <!-- Add this new section -->
+                <div class="about-services">
+                    <h3>What I Do</h3>
+                    <ul class="skills-list">
+                        <li>Full-Stack Web Development</li>
+                        <li>API Design and Development</li>
+                        <li>Database Design and Optimization</li>
+                        <li>Code Review and Mentoring</li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <a href="{% static 'resume/Lakshay_software_developer.pdf' %}" class="btn btn-primary" download>
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -158,6 +177,30 @@
                     <h4>{{ exp.company }}</h4>
                     <span class="timeline-date">{{ exp.period }}</span>
                     <p>{{ exp.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="education">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">Academic background</p>
+        </div>
+        <div class="timeline animate-on-scroll">
+            {% for edu in education %}
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>{{ edu.degree }}</h3>
+                    <h4>{{ edu.specialization }}</h4>
+                    <h5>{{ edu.institution }}</h5>
+                    <span class="timeline-date">{{ edu.period }}</span>
+                    <p>{{ edu.description }}</p>
                 </div>
             </div>
             {% endfor %}

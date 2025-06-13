@@ -37,6 +37,14 @@ def home(request):
         ],
         'projects': [
             {
+                'title': 'SecureShare',
+                'description': 'A secure file-sharing platform using Django and Django REST Framework with token-based authentication and role-based access control. Features Google Gemini AI for intelligent document analysis, encrypted file storage, single-use download tokens, and comprehensive audit logging capabilities.',
+                'tech': ['Django', 'Django REST Framework', 'PostgreSQL', 'Google Gemini AI', 'Token Authentication', 'File Encryption', 'Python', 'HTML5', 'CSS3', 'JavaScript'],
+                'github': 'https://github.com/lakshaydahiya67/SecureShare',
+                'demo': 'https://secureshare-2cc7.onrender.com/',
+                'image': 'images/projects/secureshare.jpg'
+            },
+            {
                 'title': 'Blood Bank Management System',
                 'description': 'A comprehensive Django web application for managing blood bank operations including donor registration, blood inventory tracking, and request management with role-based access control.',
                 'tech': ['Django', 'Python', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
@@ -46,7 +54,7 @@ def home(request):
             },
             {
                 'title': 'Project Management System',
-                'description': 'A comprehensive enterprise-level project management platform built with Django featuring multi-tenant architecture, Kanban-style task boards, real-time WebSocket collaboration, analytics dashboard, activity logging, notifications system, and role-based access control with responsive UI and dark mode support.',
+                'description': 'A comprehensive enterprise-level project management platform built with Django featuring multi-tenant architecture, Kanban-style task boards, analytics dashboard, activity logging, notifications system, and role-based access control with responsive UI and dark mode support.',
                 'tech': ['Django', 'Python', 'WebSocket', 'SQLite', 'HTML5', 'CSS3', 'JavaScript', 'REST APIs', 'Real-time Updates'],
                 'github': 'https://github.com/lakshaydahiya67/projectmanagement',
                 'demo': 'https://projectmanagement-c23m.onrender.com/',
@@ -57,7 +65,7 @@ def home(request):
                 'description': 'A modern, responsive portfolio website built with Django featuring dark/light theme toggle, smooth animations, and contact form integration to showcase professional skills and projects.',
                 'tech': ['Django', 'Python', 'HTML5', 'CSS3', 'JavaScript', 'SQLite'],
                 'github': 'https://github.com/lakshaydahiya67/portfolio',
-                'demo': '#',
+                'demo': 'https://portfolio-24ye.onrender.com/',
                 'image': 'images/projects/portfolio-website.jpg'
             },
         ],
@@ -70,9 +78,24 @@ def home(request):
             },
             {
                 'title': 'Cybersecurity Intern',
-                'company': 'Bharti Airtel',
-                'period': 'June 2024 - August 2024',
-                'description': 'Focused on secure coding practices and cybersecurity implementations. Developed secure web applications with emphasis on data protection, vulnerability assessment, and security protocols. Gained hands-on experience in network security, threat analysis, and implementing security measures in software development lifecycle.'
+                'company': 'Bharti Airtel Ltd.',
+                'period': 'July 2024 - September 2024',
+                'description': 'Conducted security assessments and automated scans, documenting remediation steps. Focused on secure coding practices and cybersecurity implementations with emphasis on data protection, vulnerability assessment, and security protocols.'
+            },
+            {
+                'title': 'Cybersecurity Intern',
+                'company': 'Bharti Airtel Ltd.',
+                'period': 'July 2023 - August 2023',
+                'description': 'Applied Linux administration and security best practices across networks, systems, and web applications. Gained hands-on experience in network security, threat analysis, and implementing security measures in software development lifecycle.'
+            }
+        ],
+        'education': [
+            {
+                'degree': 'Bachelor of Computer Applications (BCA)',
+                'specialization': 'Artificial Intelligence & Machine Learning',
+                'institution': 'SGT University, Gurugram',
+                'period': '2022 - 2025',
+                'description': 'Specialized in AI/ML concepts, data structures, algorithms, and software development with focus on emerging technologies and practical applications.'
             }
         ]
     }
