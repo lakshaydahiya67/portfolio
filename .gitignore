@@ -98,3 +98,4 @@ celerybeat.pid
 .dmypy.json
 dmypy.json
 .vercel
+GEMINI.md

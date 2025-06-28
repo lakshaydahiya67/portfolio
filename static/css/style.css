@@ -134,6 +134,7 @@ a:hover {
 /* Add this CSS for resume button styling */
 
 .resume-btn {
+    margin-top: -5px;
     background: var(--gradient-primary) !important;
     color: white !important;
     border-radius: 25px !important;
@@ -1044,7 +1045,21 @@ section {
 }
 
 /* Responsive Design Enhancements */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+    .hero-content, .about-content, .contact-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-image, .about-img-container {
+        margin-top: 2rem;
+        order: -1; /* Move image to top on smaller screens */
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
     .timeline::before {
         left: 20px;
     }
@@ -1066,6 +1081,37 @@ section {
         right: auto;
         border-left-color: transparent;
         border-right-color: var(--bg-secondary);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-primary);
+        padding: 1rem 0;
+        box-shadow: 0 10px 20px var(--shadow-light);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 1rem 2rem;
+        text-align: center;
+    }
+
+    .nav-link::after {
+        display: none;
     }
     
     .notification {
@@ -1104,7 +1150,32 @@ section {
     }
     
     .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .profile-circle {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.8rem; }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .profile-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
     }
 }
 
