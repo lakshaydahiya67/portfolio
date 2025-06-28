@@ -1232,6 +1232,10 @@ a:focus {
     outline-offset: 2px;
 }
 
+.nav-link:focus {
+    outline: none;
+}
+
 /* High contrast mode support */
 @media (prefers-contrast: high) {
     :root {
