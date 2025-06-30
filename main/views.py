@@ -100,18 +100,3 @@ def home(request):
         ]
     }
     return render(request, 'main/home.html', context)
-
-def about(request):
-    """About page"""
-    return render(request, 'main/about.html')
-
-def projects(request):
-    """Projects page"""
-    return render(request, 'main/projects.html')
-
-def contact(request):
-    """Contact page"""
-    if request.method == 'POST':
-        # Handle contact form submission
-        return JsonResponse({'status': 'success', 'message': 'Message sent successfully!'})
-    return render(request, 'main/contact.html')

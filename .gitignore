@@ -99,3 +99,4 @@ celerybeat.pid
 dmypy.json
 .vercel
 GEMINI.md
+CLAUDE.md
