@@ -5,15 +5,16 @@ def home(request):
     """Home page with all sections"""
     context = {
         'name': 'Lakshay',
-        'title': 'Python Developer',
+        'title': 'Software Developer',
         'email': 'lakshaydahiya67@gmail.com',
         'phone': '+91-8607684224',
-        'linkedin': 'https://www.linkedin.com/in/lakshay-dahiya-010296199/',
+        'linkedin': 'https:/www.linkedin.com/in/lakshaydahiya67/',
         'github': 'https://github.com/lakshaydahiya67',
-        'summary': 'Python Developer specialized in Django Full Stack Development with expertise in REST APIs, ORM, and MVT architecture. Experienced in cybersecurity and secure coding practices through internship at Bharti Airtel. Proficient in MySQL database integration, Git/GitHub workflows, and implementing security measures in software development. Committed to driving organizational growth through innovative and secure solutions.',
+        'summary': 'Software Developer specialized in Django Full Stack Development with expertise in REST APIs, ORM, and MVT architecture. Experienced in cybersecurity and secure coding practices through internship at Bharti Airtel. Proficient in MySQL database integration, Git/GitHub workflows, and implementing security measures in software development. Committed to driving organizational growth through innovative and secure solutions.',
         'skills': [
             {'name': 'Python', 'icon': 'fab fa-python'},
             {'name': 'Django', 'icon': 'fas fa-server'},
+            {'name': 'FastAPI', 'icon': 'fas fa-bolt'},
             {'name': 'REST APIs', 'icon': 'fas fa-exchange-alt'},
             {'name': 'ORM', 'icon': 'fas fa-database'},
             {'name': 'MVT Architecture', 'icon': 'fas fa-sitemap'},
@@ -43,6 +44,14 @@ def home(request):
                 'github': 'https://github.com/lakshaydahiya67/SecureShare',
                 'demo': 'https://secureshare-2cc7.onrender.com/',
                 'image': 'images/projects/secureshare.jpg'
+            },
+            {
+                'title': 'Task Master',
+                'description': 'A modern RESTful API todo application built with FastAPI, featuring automatic OpenAPI documentation, Pydantic data validation, async request handling, and SQLAlchemy ORM integration. The application supports full CRUD operations with proper response models and status codes.',
+                'tech': ['FastAPI', 'Python', 'SQLAlchemy', 'Pydantic', 'Docker', 'SQLite', 'RESTful API', 'OpenAPI', 'Async/Await'],
+                'github': 'https://github.com/lakshaydahiya67/Task-Master',
+                'demo': 'https://github.com/lakshaydahiya67/Task-Master',
+                'image': 'images/projects/task-master.jpg'
             },
             {
                 'title': 'Blood Bank Management System',
@@ -96,6 +105,33 @@ def home(request):
                 'institution': 'SGT University, Gurugram',
                 'period': '2022 - 2025',
                 'description': 'Specialized in AI/ML concepts, data structures, algorithms, and software development with focus on emerging technologies and practical applications.'
+            }
+        ],
+        'extracurricular': [
+            {
+                'title': 'Competitive Programming',
+                'description': 'Active problem solver on LeetCode',
+                'link': 'https://leetcode.com/u/lakshaydahiya67/',
+                'icon': 'fas fa-code',
+                'period': '2025 - Present'
+            },
+            {
+                'title': 'AIU National Chess Tournament 2023',
+                'description': 'Represented SGT University at the national level chess competition',
+                'icon': 'fas fa-chess',
+                'period': '2023'
+            },
+            {
+                'title': 'I-SHINE 2025',
+                'description': 'Presented the Blood Bank Management System at the international technical summit hosted by SGT University',
+                'icon': 'fas fa-microphone',
+                'period': '2025'
+            },
+            {
+                'title': 'Open Source Contribution',
+                'description': 'Active contributor to various open-source projects on GitHub',
+                'icon': 'fab fa-github',
+                'period': '2024 - Present'
             }
         ]
     }

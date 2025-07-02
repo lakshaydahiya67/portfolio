@@ -23,15 +23,15 @@
             </div>
             <div class="hero-image">
                 <div class="profile-circle">
-                    <img src="{% static 'images/Lakshay_passport_size.png' %}" alt="Lakshay" class="profile-img">
+                    <img src="{% static 'images/Lakshay.jpeg' %}" alt="Lakshay" class="profile-img">
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <a href="#about" class="scroll-indicator">
             <div class="scroll-arrow">
                 <i class="fas fa-chevron-down"></i>
             </div>
-        </div>
+        </a>
     </div>
     <div class="hero-bg-animation">
         <div class="floating-shape shape-1"></div>
@@ -50,7 +50,7 @@
         <div class="about-content">
             <div class="about-text animate-on-scroll">
                 <p>
-                    I'm a passionate Python Developer specialized in Django Full Stack Development 
+                    I'm a passionate Software Developer specialized in Django Full Stack Development 
                     with expertise in REST APIs, ORM, and MVT architecture. I have hands-on experience 
                     working at Cincooni Systems Private Ltd, where I focused on creating scalable web 
                     applications and implementing innovative solutions.
@@ -201,6 +201,35 @@
                     <h5>{{ edu.institution }}</h5>
                     <span class="timeline-date">{{ edu.period }}</span>
                     <p>{{ edu.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Extracurricular Activities Section -->
+<section id="extracurricular" class="extracurricular">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Extracurricular Activities</h2>
+            <p class="section-subtitle">Beyond the classroom and workplace</p>
+        </div>
+        <div class="extracurricular-grid">
+            {% for activity in extracurricular %}
+            <div class="extracurricular-card animate-on-scroll">
+                <div class="extracurricular-icon">
+                    <i class="{{ activity.icon }}"></i>
+                </div>
+                <div class="extracurricular-content">
+                    <h3>{{ activity.title }}</h3>
+                    <span class="extracurricular-period">{{ activity.period }}</span>
+                    <p>{{ activity.description }}</p>
+                    {% if activity.link %}
+                    <a href="{{ activity.link }}" target="_blank" class="btn btn-small">
+                        View Profile <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

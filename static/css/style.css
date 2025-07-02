@@ -802,6 +802,87 @@ section {
     border-right-color: var(--bg-secondary);
 }
 
+/* Extracurricular Activities Section */
+.extracurricular {
+    padding: 80px 0;
+    background-color: var(--bg-secondary);
+}
+
+.extracurricular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.extracurricular-card {
+    background: var(--bg-primary);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    transition: var(--transition-medium);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+}
+
+.extracurricular-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px var(--shadow-medium);
+    border-color: var(--primary-color);
+}
+
+.extracurricular-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 24px;
+}
+
+.extracurricular-content {
+    flex: 1;
+}
+
+.extracurricular-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.extracurricular-period {
+    display: inline-block;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+.extracurricular-content p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.extracurricular .btn-small {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+.extracurricular .btn-small i {
+    margin-left: 5px;
+    font-size: 0.8rem;
+}
+
 /* Contact Section */
 .contact {
     background: var(--bg-secondary);
