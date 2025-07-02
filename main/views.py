@@ -50,7 +50,7 @@ def home(request):
                 'description': 'A modern RESTful API todo application built with FastAPI, featuring automatic OpenAPI documentation, Pydantic data validation, async request handling, and SQLAlchemy ORM integration. The application supports full CRUD operations with proper response models and status codes.',
                 'tech': ['FastAPI', 'Python', 'SQLAlchemy', 'Pydantic', 'Docker', 'SQLite', 'RESTful API', 'OpenAPI', 'Async/Await'],
                 'github': 'https://github.com/lakshaydahiya67/Task-Master',
-                'demo': 'https://github.com/lakshaydahiya67/Task-Master',
+                'demo': 'https://task-master-ebt4.onrender.com/',
                 'image': 'images/projects/task-master.jpg'
             },
             {
