@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ name }} - Portfolio{% endblock %}</title>
     
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Modern portfolio showcasing Django Full Stack Development expertise and projects by Lakshay Dahiya">
+    <meta name="keywords" content="Django, Python, Full Stack, Developer, Portfolio, REST API, Web Development">
+    <meta name="author" content="Lakshay Dahiya">
+    <meta name="theme-color" content="#007ACC">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Lakshay Portfolio">
+    <meta name="msapplication-TileColor" content="#0D1117">
+    <meta name="msapplication-config" content="{% static 'browserconfig.xml' %}">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="{% url 'main:manifest' %}">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/Lakshay.jpeg' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/Lakshay.jpeg' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/Lakshay.jpeg' %}">
+    
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Modern Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     
     <!-- Styles -->
     {% load static %}
@@ -36,7 +64,7 @@
                 <a href="{% url 'main:home' %}#education" class="nav-link">Education</a>
                 <a href="{% url 'main:home' %}#extracurricular" class="nav-link">Extracurricular</a>
                 <a href="{% url 'main:home' %}#contact" class="nav-link">Contact</a>
-                <a href="{% static 'resume/Lakshay_software_developer.pdf' %}" class="nav-link resume-btn" download>
+                <a href="{% static 'resume/Lakshay_software_developer.pdf' %}" class="nav-link btn-download" download>
                     <i class="fas fa-download"></i> Resume
                 </a>
             </div>
@@ -69,6 +97,140 @@
 
     <!-- Scripts -->
     <script src="{% static 'js/script.js' %}"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        // Register Service Worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('{% url "main:service_worker" %}')
+                    .then(registration => {
+                        console.log('🎯 PWA: Service Worker registered successfully:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    console.log('🔄 PWA: New content available, please refresh');
+                                    // Optionally show a toast notification
+                                    showUpdateAvailable();
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.log('❌ PWA: Service Worker registration failed:', error);
+                    });
+            });
+        }
+        
+        // PWA Install Prompt
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('📱 PWA: Install prompt triggered');
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallButton();
+        });
+        
+        // Show install button (you can customize this)
+        function showInstallButton() {
+            // Create install button if it doesn't exist
+            if (!document.getElementById('pwa-install-btn')) {
+                const installBtn = document.createElement('button');
+                installBtn.id = 'pwa-install-btn';
+                installBtn.innerHTML = '<i class="fas fa-download"></i> Install App';
+                installBtn.className = 'btn btn-secondary';
+                installBtn.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    z-index: 1000;
+                    background: var(--primary-color);
+                    color: white;
+                    border: none;
+                    padding: 12px 16px;
+                    border-radius: 8px;
+                    font-family: var(--font-sans);
+                    font-weight: 500;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
+                `;
+                
+                installBtn.addEventListener('click', async () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        const { outcome } = await deferredPrompt.userChoice;
+                        console.log('📱 PWA: Install prompt result:', outcome);
+                        deferredPrompt = null;
+                        installBtn.remove();
+                    }
+                });
+                
+                document.body.appendChild(installBtn);
+                
+                // Auto-hide after 10 seconds
+                setTimeout(() => {
+                    if (installBtn && installBtn.parentNode) {
+                        installBtn.style.opacity = '0';
+                        setTimeout(() => installBtn.remove(), 300);
+                    }
+                }, 10000);
+            }
+        }
+        
+        // Show update notification
+        function showUpdateAvailable() {
+            console.log('🔄 PWA: New version available! Refresh to update.');
+            
+            // Create update notification
+            const updateDiv = document.createElement('div');
+            updateDiv.className = 'update-available';
+            updateDiv.innerHTML = '<i class="fas fa-sync-alt"></i> Update Available - Click to Refresh';
+            updateDiv.onclick = () => window.location.reload();
+            document.body.appendChild(updateDiv);
+            
+            // Auto-remove after 10 seconds
+            setTimeout(() => {
+                if (updateDiv && updateDiv.parentNode) {
+                    updateDiv.style.opacity = '0';
+                    setTimeout(() => updateDiv.remove(), 300);
+                }
+            }, 10000);
+        }
+        
+        // Track PWA usage
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('📱 PWA: App installed successfully');
+        });
+        
+        // Handle offline/online status
+        let offlineIndicator = null;
+        
+        window.addEventListener('online', () => {
+            console.log('🌐 PWA: Back online');
+            if (offlineIndicator && offlineIndicator.parentNode) {
+                offlineIndicator.style.opacity = '0';
+                setTimeout(() => offlineIndicator.remove(), 300);
+                offlineIndicator = null;
+            }
+        });
+        
+        window.addEventListener('offline', () => {
+            console.log('📴 PWA: Gone offline - using cached content');
+            
+            if (!offlineIndicator) {
+                offlineIndicator = document.createElement('div');
+                offlineIndicator.className = 'offline-indicator';
+                offlineIndicator.innerHTML = '<i class="fas fa-wifi"></i> Offline Mode';
+                document.body.appendChild(offlineIndicator);
+            }
+        });
+    </script>
+    
     {% block extra_js %}{% endblock %}
 </body>
 </html>

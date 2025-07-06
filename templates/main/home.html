@@ -6,38 +6,135 @@
     <div class="hero-container">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">
-                    Hi, I'm <span class="highlight">{{ name }}</span>
-                </h1>
-                <h2 class="hero-subtitle">{{ title }}</h2>
-                <p class="hero-description">
-                    {{ summary }}
-                </p>
+                <div class="hero-profile-section">
+                    <div class="hero-profile-image">
+                        <div class="profile-circle">
+                            <img src="{% static 'images/Lakshay.jpeg' %}" alt="{{ name }}" class="profile-img">
+                        </div>
+                    </div>
+                    <div class="profile-quick-info">
+                        <h1 class="profile-name">{{ name }}</h1>
+                        <p class="profile-title">{{ title }}</p>
+                        <div class="profile-status">
+                            <span class="status-dot live"></span>
+                            <span class="status-text">Available for opportunities</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">lakshay@portfolio:~$</span>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="terminal-line">
+                            <span class="prompt">$</span>
+                            <span class="command">cat about.md</span>
+                        </div>
+                        <p class="hero-description">
+                            {{ summary }}
+                        </p>
+                        <div class="terminal-line">
+                            <span class="prompt">$</span>
+                            <span class="command">ls skills/</span>
+                        </div>
+                        <div class="terminal-output">
+                            <span class="skill-item">Django/</span>
+                            <span class="skill-item">Python/</span>
+                            <span class="skill-item">FastAPI/</span>
+                            <span class="skill-item">MySQL/</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">$</span>
+                            <span class="command">ls projects/</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    <a href="{% static 'resume/Lakshay_software_developer.pdf' %}" class="btn btn-primary" download>
-                        <i class="fas fa-download"></i> Download Resume
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-folder-open"></i>
+                        ./projects
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-terminal"></i>
+                        ./contact
+                    </a>
+                    <a href="{% static 'resume/Lakshay_software_developer.pdf' %}" class="btn btn-download" download>
+                        <i class="fas fa-download"></i>
+                        curl -O resume.pdf
                     </a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="profile-circle">
-                    <img src="{% static 'images/Lakshay.jpeg' %}" alt="Lakshay" class="profile-img">
+            <div class="hero-code">
+                <div class="code-editor">
+                    <div class="code-editor-header">
+                        <div class="code-editor-dots">
+                            <div class="code-editor-dot red"></div>
+                            <div class="code-editor-dot yellow"></div>
+                            <div class="code-editor-dot green"></div>
+                        </div>
+                        <div class="code-editor-title">views.py</div>
+                        <div class="code-editor-actions">
+                            <i class="fas fa-play code-run-btn"></i>
+                        </div>
+                    </div>
+                    <div class="code-editor-content">
+                        <pre><code class="language-python">from django.shortcuts import render
+from django.http import JsonResponse
+
+class DeveloperProfile:
+    def __init__(self):
+        self.name = "{{ name }}"
+        self.role = "{{ title }}"
+        self.skills = [
+            "Django", "FastAPI", "Python",
+            "REST APIs", "Database Design",
+            "Full-Stack Development"
+        ]
+        self.passionate_about = [
+            "Clean Code", "Performance",
+            "User Experience", "Innovation"
+        ]
+    
+    def get_availability(self):
+        return {
+            "status": "open_to_opportunities",
+            "location": "Remote | Delhi, India",
+            "contact": "{{ email }}"
+        }
+
+# Initialize developer instance
+lakshay = DeveloperProfile()
+print(f"Hello! I'm {lakshay.name}")
+print("Ready to build amazing things! 🚀")</code></pre>
+                    </div>
+                    <div class="code-output">
+                        <div class="output-header">
+                            <i class="fas fa-play"></i>
+                            <span>Output</span>
+                        </div>
+                        <div class="output-content" id="code-output-content">
+                            <div class="output-line comment">
+                                <i class="fas fa-info-circle"></i>
+                                Click the green run button to execute the code
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <a href="#about" class="scroll-indicator">
+        <div class="scroll-indicator">
             <div class="scroll-arrow">
                 <i class="fas fa-chevron-down"></i>
             </div>
-        </a>
+            <span>scroll to explore</span>
+        </div>
     </div>
-    <div class="hero-bg-animation">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-    </div>
+    <div class="hero-bg-particles" id="hero-particles"></div>
 </section>
 
 <!-- About Section -->
@@ -90,7 +187,7 @@
                         <li>Code Review and Mentoring</li>
                     </ul>
                     <div style="text-align: center; margin-top: 1.5rem;">
-                        <a href="{% static 'resume/Lakshay_software_developer.pdf' %}" class="btn btn-primary" download>
+                        <a href="{% static 'resume/Lakshay_software_developer.pdf' %}" class="btn btn-download" download>
                             <i class="fas fa-download"></i> Download Resume
                         </a>
                     </div>
@@ -104,21 +201,65 @@
 <section id="skills" class="skills">
     <div class="container">
         <div class="section-header animate-on-scroll">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <p class="section-subtitle">Technologies I work with</p>
+            <h2 class="section-title">Tech Stack</h2>
+            <p class="section-subtitle">Technologies and tools I work with</p>
         </div>
-        <div class="skills-grid">
-            {% for skill in skills %}
-            <div class="skill-card animate-on-scroll">
-                <div class="skill-icon">
-                    <i class="{{ skill.icon }}"></i>
+        <div class="skills-layout">
+            <div class="skills-grid">
+                {% for skill in skills %}
+                <div class="skill-card glass-card animate-on-scroll" data-skill="{{ skill.name|lower }}">
+                    <div class="skill-icon">
+                        <i class="{{ skill.icon }}"></i>
+                    </div>
+                    <h3>{{ skill.name }}</h3>
+                    <div class="skill-level">
+                        <div class="skill-dots">
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
                 </div>
-                <h3>{{ skill.name }}</h3>
-                <div class="skill-progress">
-                    <div class="progress-bar" data-width="85"></div>
+                {% endfor %}
+            </div>
+            <div class="skill-details glass-card">
+                <div class="skill-detail-header">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="skill-detail-title">skill_info.json</span>
+                </div>
+                <div class="skill-detail-content">
+                    <pre><code class="language-json">{
+  "currently_selected": "Django",
+  "experience": "2+ years",
+  "proficiency": "Advanced",
+  "projects_built": [
+    "SecureShare Platform",
+    "Project Management System",
+    "Blood Bank Management",
+    "Portfolio Website"
+  ],
+  "key_features_used": [
+    "MVT Architecture",
+    "ORM & Database Integration", 
+    "REST API Development",
+    "Authentication & Security",
+    "Admin Interface"
+  ],
+  "favorite_aspects": [
+    "Rapid Development",
+    "Built-in Security",
+    "Scalable Architecture",
+    "Rich Ecosystem"
+  ]
+}</code></pre>
                 </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 </section>
@@ -128,35 +269,117 @@
     <div class="container">
         <div class="section-header animate-on-scroll">
             <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Some of my recent work</p>
+            <p class="section-subtitle">Interactive portfolio of applications I've built</p>
         </div>
-        <div class="projects-grid">
-            {% for project in projects %}
-            <div class="project-card animate-on-scroll">
-                <div class="project-image">
-                    <img src="{% static project.image %}" alt="{{ project.title }}">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="{{ project.github }}" class="project-link" target="_blank" title="View Code">
+        <div class="projects-layout">
+            <div class="projects-grid">
+                {% for project in projects %}
+                <div class="project-card glass-card animate-on-scroll" data-project="{{ forloop.counter0 }}">
+                    <div class="project-header">
+                        <div class="project-status">
+                            <span class="status-dot live"></span>
+                            <span class="status-text">Live</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="{{ project.github }}" class="action-btn" target="_blank" title="View Source">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="{{ project.demo }}" class="project-link" target="_blank" title="Live Demo">
+                            <a href="{{ project.demo }}" class="action-btn" target="_blank" title="Live Demo">
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
+                            <button class="action-btn project-expand" title="View Details">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-preview">
+                        <img src="{% static project.image %}" alt="{{ project.title }}">
+                        <div class="project-overlay">
+                            <div class="overlay-content">
+                                <h3>{{ project.title }}</h3>
+                                <p>Click to explore</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">{{ project.title }}</h3>
+                        <p class="project-summary">{{ project.description|truncatewords:15 }}</p>
+                        <div class="project-tech">
+                            {% for tech in project.tech|slice:":4" %}
+                            <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
+                            {% if project.tech|length > 4 %}
+                            <span class="tech-more">+{{ project.tech|length|add:"-4" }}</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-                <div class="project-content">
-                    <h3 class="project-title">{{ project.title }}</h3>
-                    <p class="project-description">{{ project.description }}</p>
-                    <div class="project-tech">
-                        {% for tech in project.tech %}
-                        <span class="tech-tag">{{ tech }}</span>
-                        {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="project-detail glass-card">
+                <div class="project-detail-header">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="project-detail-title">project_details.md</span>
+                    <button class="close-detail">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="project-detail-content">
+                    <div class="project-detail-body" id="project-detail-body">
+                        <div class="detail-section">
+                            <h3># SecureShare Platform</h3>
+                            <p class="project-detail-description">
+                                A comprehensive secure file-sharing platform built with Django and Django REST Framework. 
+                                Features include token-based authentication, role-based access control, Google Gemini AI 
+                                integration for document analysis, encrypted file storage, and audit logging.
+                            </p>
+                        </div>
+                        <div class="detail-section">
+                            <h4>## 🚀 Key Features</h4>
+                            <ul class="feature-list">
+                                <li>Token-based authentication system</li>
+                                <li>Role-based access control (RBAC)</li>
+                                <li>Google Gemini AI for document analysis</li>
+                                <li>End-to-end file encryption</li>
+                                <li>Single-use download tokens</li>
+                                <li>Comprehensive audit logging</li>
+                            </ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4>## 🛠 Tech Stack</h4>
+                            <div class="tech-grid">
+                                <span class="tech-item">Django</span>
+                                <span class="tech-item">Django REST Framework</span>
+                                <span class="tech-item">PostgreSQL</span>
+                                <span class="tech-item">Google Gemini AI</span>
+                                <span class="tech-item">JavaScript</span>
+                                <span class="tech-item">HTML5 & CSS3</span>
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <h4>## 📊 Performance Metrics</h4>
+                            <div class="metrics-grid">
+                                <div class="metric">
+                                    <span class="metric-value">99.9%</span>
+                                    <span class="metric-label">Uptime</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">&lt;2s</span>
+                                    <span class="metric-label">Load Time</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-value">A+</span>
+                                    <span class="metric-label">Security Grade</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 </section>

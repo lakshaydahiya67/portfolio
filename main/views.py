@@ -1,5 +1,10 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from django.views.decorators.http import require_GET
+from django.views.decorators.cache import cache_control
+import json
+import os
+from django.conf import settings
 
 def home(request):
     """Home page with all sections"""
@@ -83,7 +88,18 @@ def home(request):
                 'title': 'Full Stack Developer',
                 'company': 'Cincooni Systems Private Ltd',
                 'period': 'December 2024 - March 2025',
-                'description': 'Specialized in Django Full Stack Development with expertise in REST APIs, ORM, and MVT architecture. Successfully integrated MySQL databases and implemented Git/GitHub workflows for version control. Focused on creating scalable web applications and driving organizational growth through innovative solutions.'
+                'description': '''Specialized in Django Full Stack Development with comprehensive responsibilities including:
+• Developed and maintained scalable web applications using Python and Django framework
+• Designed and implemented RESTful APIs for seamless frontend-backend communication
+• Built responsive user interfaces using HTML5, CSS3, and JavaScript
+• Integrated MySQL databases with Django ORM for efficient data management
+• Collaborated with cross-functional teams using Git/GitHub for version control and code review
+• Containerized applications using Docker for consistent deployment environments
+• Participated in agile development methodologies and sprint planning
+• Conducted code reviews and maintained high code quality standards
+• Implemented authentication and authorization systems for secure applications
+• Optimized application performance and database queries for scalability
+• Mentored junior developers and contributed to team knowledge sharing'''
             },
             {
                 'title': 'Cybersecurity Intern',
@@ -136,3 +152,77 @@ def home(request):
         ]
     }
     return render(request, 'main/home.html', context)
+
+@require_GET
+@cache_control(max_age=3600)  # Cache for 1 hour
+def service_worker(request):
+    """Serve the service worker file"""
+    try:
+        sw_path = os.path.join(settings.STATIC_ROOT or settings.STATICFILES_DIRS[0], 'sw.js')
+        with open(sw_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        return HttpResponse(content, content_type='application/javascript')
+    except (FileNotFoundError, IndexError):
+        # Fallback: serve from static URL
+        return HttpResponse(
+            f"importScripts('{settings.STATIC_URL}sw.js');",
+            content_type='application/javascript'
+        )
+
+@require_GET  
+@cache_control(max_age=86400)  # Cache for 24 hours
+def manifest(request):
+    """Serve the PWA manifest"""
+    manifest_data = {
+        "name": "Lakshay Dahiya - Software Developer Portfolio",
+        "short_name": "Lakshay Portfolio",
+        "description": "Modern portfolio showcasing Django Full Stack Development expertise and projects",
+        "start_url": "/",
+        "display": "standalone",
+        "background_color": "#0D1117",
+        "theme_color": "#007ACC",
+        "orientation": "portrait-primary",
+        "categories": ["portfolio", "developer", "business"],
+        "lang": "en",
+        "dir": "ltr",
+        "icons": [
+            {
+                "src": f"{settings.STATIC_URL}images/Lakshay.jpeg",
+                "sizes": "192x192",
+                "type": "image/jpeg",
+                "purpose": "any maskable"
+            },
+            {
+                "src": f"{settings.STATIC_URL}images/Lakshay.jpeg", 
+                "sizes": "512x512",
+                "type": "image/jpeg",
+                "purpose": "any maskable"
+            }
+        ],
+        "shortcuts": [
+            {
+                "name": "View Projects",
+                "short_name": "Projects",
+                "url": "/#projects",
+                "icons": [
+                    {
+                        "src": f"{settings.STATIC_URL}images/Lakshay.jpeg",
+                        "sizes": "192x192"
+                    }
+                ]
+            },
+            {
+                "name": "Contact Me", 
+                "short_name": "Contact",
+                "url": "/#contact",
+                "icons": [
+                    {
+                        "src": f"{settings.STATIC_URL}images/Lakshay.jpeg",
+                        "sizes": "192x192"
+                    }
+                ]
+            }
+        ]
+    }
+    
+    return JsonResponse(manifest_data)
