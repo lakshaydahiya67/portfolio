@@ -1946,9 +1946,10 @@ a:focus,
 .project-detail {
     padding: 0;
     position: sticky;
-    top: var(--spacing-xl);
-    max-height: 80vh;
+    top: 80px; /* Fixed top position accounting for navbar */
+    max-height: calc(100vh - 100px); /* Better height calculation */
     overflow: hidden;
+    transition: all var(--transition-normal);
 }
 
 .project-detail-header {
@@ -1986,7 +1987,7 @@ a:focus,
 
 .project-detail-content {
     overflow-y: auto;
-    max-height: calc(80vh - 60px);
+    max-height: calc(100vh - 160px); /* Adjusted for better visibility */
 }
 
 .project-detail-content::-webkit-scrollbar {
@@ -2136,8 +2137,9 @@ a:focus,
     
     .project-detail {
         order: -1;
-        position: static;
-        max-height: 500px;
+        position: sticky;
+        top: 20px; /* Reduced top spacing for mobile */
+        max-height: 70vh; /* Better mobile height */
     }
     
     .projects-grid {

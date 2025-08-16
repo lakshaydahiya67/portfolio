@@ -568,6 +568,22 @@ class ProjectsManager {
     generateProjectData() {
         return {
             0: {
+                title: 'WhatsApp Web Clone',
+                description: 'A full-stack WhatsApp Web clone built with FastAPI backend and React frontend, featuring real-time messaging via WebSocket, MongoDB for data persistence, simulated webhook data ingestion, and responsive UI with message status indicators and chat management.',
+                features: [
+                    'Real-time messaging via WebSocket',
+                    'MongoDB data persistence',
+                    'Simulated webhook data ingestion',
+                    'React frontend with Vite',
+                    'Tailwind CSS responsive design',
+                    'Message status indicators (sent, delivered, read)',
+                    'Chat management and organization',
+                    'Deployed on Render and Vercel'
+                ],
+                tech: ['FastAPI', 'React', 'MongoDB', 'WebSocket', 'Vite', 'Tailwind CSS', 'Python', 'JavaScript', 'Render', 'Vercel'],
+                metrics: { uptime: '99%', loadTime: '<1.5s', responsiveness: 'A+' }
+            },
+            1: {
                 title: 'SecureShare Platform',
                 description: 'A comprehensive secure file-sharing platform built with Django and Django REST Framework. Features include token-based authentication, role-based access control, Google Gemini AI integration for document analysis, encrypted file storage, and audit logging.',
                 features: [
@@ -581,7 +597,7 @@ class ProjectsManager {
                 tech: ['Django', 'Django REST Framework', 'PostgreSQL', 'Google Gemini AI', 'JavaScript', 'HTML5 & CSS3'],
                 metrics: { uptime: '99.9%', loadTime: '<2s', security: 'A+' }
             },
-            1: {
+            2: {
                 title: 'Task Master API',
                 description: 'A modern RESTful API todo application built with FastAPI, featuring automatic OpenAPI documentation, Pydantic data validation, async request handling, and SQLAlchemy ORM integration.',
                 features: [
@@ -595,7 +611,7 @@ class ProjectsManager {
                 tech: ['FastAPI', 'Python', 'SQLAlchemy', 'Pydantic', 'Docker', 'SQLite'],
                 metrics: { performance: '95%', coverage: '85%', speed: '<500ms' }
             },
-            2: {
+            3: {
                 title: 'Blood Bank Management',
                 description: 'A comprehensive Django web application for managing blood bank operations including donor registration, blood inventory tracking, and request management with role-based access control.',
                 features: [
@@ -608,20 +624,6 @@ class ProjectsManager {
                 ],
                 tech: ['Django', 'Python', 'MySQL', 'HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
                 metrics: { efficiency: '90%', users: '500+', satisfaction: '4.8/5' }
-            },
-            3: {
-                title: 'Project Management System',
-                description: 'An enterprise-level project management platform with multi-tenant architecture, Kanban-style task boards, analytics dashboard, and real-time notifications.',
-                features: [
-                    'Multi-tenant architecture',
-                    'Kanban-style task boards',
-                    'Real-time notifications',
-                    'Analytics dashboard',
-                    'Team collaboration tools',
-                    'Resource management'
-                ],
-                tech: ['Django', 'Python', 'WebSocket', 'SQLite', 'HTML5', 'CSS3', 'JavaScript'],
-                metrics: { productivity: '85%', teams: '50+', tasks: '10k+' }
             },
             4: {
                 title: 'Portfolio Website',
@@ -672,6 +674,15 @@ class ProjectsManager {
         const projectDetail = document.querySelector('.project-detail');
         if (projectDetail) {
             projectDetail.classList.add('active');
+            
+            // Scroll the detail panel into view smoothly
+            setTimeout(() => {
+                projectDetail.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'nearest'
+                });
+            }, 100); // Small delay to ensure the panel is visible before scrolling
         }
     }
 

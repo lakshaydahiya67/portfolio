@@ -43,6 +43,14 @@ def home(request):
         ],
         'projects': [
             {
+                'title': 'WhatsApp Web Clone',
+                'description': 'A full-stack WhatsApp Web clone built with FastAPI backend and React frontend, featuring real-time messaging via WebSocket, MongoDB for data persistence, simulated webhook data ingestion, and responsive UI with message status indicators and chat management.',
+                'tech': ['FastAPI', 'React', 'MongoDB', 'WebSocket', 'Vite', 'Tailwind CSS', 'Python', 'JavaScript', 'Render', 'Vercel'],
+                'github': 'https://github.com/lakshaydahiya67/WhatsApp_Web',
+                'demo': 'https://whats-app-web-umber.vercel.app',
+                'image': 'images/projects/whatsapp-web-clone.jpg'
+            },
+            {
                 'title': 'SecureShare',
                 'description': 'A secure file-sharing platform using Django and Django REST Framework with token-based authentication and role-based access control. Features Google Gemini AI for intelligent document analysis, encrypted file storage, single-use download tokens, and comprehensive audit logging capabilities.',
                 'tech': ['Django', 'Django REST Framework', 'PostgreSQL', 'Google Gemini AI', 'Token Authentication', 'File Encryption', 'Python', 'HTML5', 'CSS3', 'JavaScript'],
@@ -65,14 +73,6 @@ def home(request):
                 'github': 'https://github.com/lakshaydahiya67/bloodbankmanagement',
                 'demo': 'https://bloodbankmanagement-wrmp.onrender.com/',
                 'image': 'images/projects/blood-bank-management.jpg'
-            },
-            {
-                'title': 'Project Management System',
-                'description': 'A comprehensive enterprise-level project management platform built with Django featuring multi-tenant architecture, Kanban-style task boards, analytics dashboard, activity logging, notifications system, and role-based access control with responsive UI and dark mode support.',
-                'tech': ['Django', 'Python', 'WebSocket', 'SQLite', 'HTML5', 'CSS3', 'JavaScript', 'REST APIs', 'Real-time Updates'],
-                'github': 'https://github.com/lakshaydahiya67/projectmanagement',
-                'demo': 'https://projectmanagement-c23m.onrender.com/',
-                'image': 'images/projects/project-management-system.jpg'
             },
             {
                 'title': 'Portfolio Website',
